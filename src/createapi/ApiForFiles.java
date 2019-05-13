@@ -106,4 +106,6 @@ public class ApiForFiles {
 
 /*https://dzone.com/articles/building-simple-restful-api*/
 
-https://dzone.com/articles/building-simple-restful-api
+/* https://dzone.com/articles/building-simple-restful-api */
+	
+/*	https://www.baeldung.com/spark-framework-rest-api */
