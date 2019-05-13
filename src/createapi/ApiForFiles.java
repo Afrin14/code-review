@@ -9,7 +9,7 @@ import java.lang.Object;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-
+import static createapi.JsonUtil.*;
 import static spark.Spark.*;
 
 import javax.xml.ws.Response;
@@ -22,7 +22,11 @@ public class ApiForFiles {
 		 exception(Exception.class, (e, req, res) -> e.printStackTrace()); // print all exceptions
 		    staticFiles.location("/public");
 		    port(9999);
-		get("/listfiles", (req, res) -> listFiles(req));
+		get("/listfiles", (req, res) -> {listFiles(req);}, json());
+		
+			after((req, res) -> {
+			res.type("application/json");
+			});
 	    get("/downloadfiles", (req, res) -> downloadFiles(req));
 	    post("/uploadfiles", (req, res) -> uploadFiles(req));
 
@@ -100,3 +104,6 @@ public class ApiForFiles {
 }
 
 
+/*https://dzone.com/articles/building-simple-restful-api*/
+
+https://dzone.com/articles/building-simple-restful-api

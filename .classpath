@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="/home/hackerlappy/Downloads/ok/okio-2.2.2.jar"/>
 	<classpathentry kind="lib" path="/home/hackerlappy/Downloads/ok/jar_files/okhttp-3.9.0.jar"/>
 	<classpathentry kind="lib" path="/home/hackerlappy/Downloads/ok/jar_files/okio-1.13.0.jar"/>
+	<classpathentry kind="lib" path="/home/hackerlappy/Downloads/ok/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
