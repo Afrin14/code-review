@@ -22,7 +22,7 @@ public class ApiForFiles {
 		 exception(Exception.class, (e, req, res) -> e.printStackTrace()); // print all exceptions
 		    staticFiles.location("/public");
 		    port(9999);
-		get("/listfiles", (req, res) -> {listFiles(req);}, json());
+		get("/listfiles", (req, res) -> {listFiles(req);}, json());  GET /
 		
 			after((req, res) -> {
 			res.type("application/json");
@@ -31,7 +31,37 @@ public class ApiForFiles {
 	    post("/uploadfiles", (req, res) -> uploadFiles(req));
 
 	}
+		
+	
+	private static Object listFiles(Request req) {
+		
+		
+		OkHttpClient client = new OkHttpClient();
 
+		Request request = new Request.Builder()
+		  .url("https://staging.cloud-elements.com/elements/api-v2/folders/contents?path=%2FCloudElements")
+		  .get()
+		  .addHeader("Authorization", "User toLrlzwyj1DCHzNbG4cIQVHXJH8Ncm5io0p18IhHMuA=, Organization 100695904e9caa0d54937627a382ddae, Element s2xoR2LAPrhjHlL06u745fmfFevtiEoggekyzQNb1ns=")
+		  .addHeader("User-Agent", "PostmanRuntime/7.11.0")
+		  .addHeader("Accept", "*/*")
+		  .addHeader("Cache-Control", "no-cache")
+		  .addHeader("Postman-Token", "e6ac3cd9-af40-4d59-b768-5fb983203f74,62e52038-2c9e-44bc-ad52-13bd2599c08a")
+		  .addHeader("Host", "staging.cloud-elements.com")
+		  .addHeader("accept-encoding", "gzip, deflate")
+		  .addHeader("Connection", "keep-alive")
+		  .addHeader("cache-control", "no-cache")
+		  .build();
+
+		Response response = client.newCall(request).execute();		
+		
+		JSONObject json = new JSONObject(((okhttp3.Request) response).body().string());
+		
+		
+		
+		
+	}
+
+	
 	private static Object uploadFiles(Request req) {
 		OkHttpClient client = new OkHttpClient();
 
@@ -79,27 +109,6 @@ public class ApiForFiles {
 	
 	}
 
-	private static Object listFiles(Request req) {
-		
-		
-		OkHttpClient client = new OkHttpClient();
-
-		Request request = new Request.Builder()
-		  .url("https://staging.cloud-elements.com/elements/api-v2/folders/contents?path=%2FCloudElements")
-		  .get()
-		  .addHeader("Authorization", "User toLrlzwyj1DCHzNbG4cIQVHXJH8Ncm5io0p18IhHMuA=, Organization 100695904e9caa0d54937627a382ddae, Element s2xoR2LAPrhjHlL06u745fmfFevtiEoggekyzQNb1ns=")
-		  .addHeader("User-Agent", "PostmanRuntime/7.11.0")
-		  .addHeader("Accept", "*/*")
-		  .addHeader("Cache-Control", "no-cache")
-		  .addHeader("Postman-Token", "e6ac3cd9-af40-4d59-b768-5fb983203f74,62e52038-2c9e-44bc-ad52-13bd2599c08a")
-		  .addHeader("Host", "staging.cloud-elements.com")
-		  .addHeader("accept-encoding", "gzip, deflate")
-		  .addHeader("Connection", "keep-alive")
-		  .addHeader("cache-control", "no-cache")
-		  .build();
-
-		Response response = client.newCall(request).execute();		
-	}
 
 }
 
